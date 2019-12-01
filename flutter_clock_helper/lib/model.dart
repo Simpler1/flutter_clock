@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 /// Contestants: Do not edit this.
 class ClockModel extends ChangeNotifier {
   get is24HourFormat => _is24HourFormat;
-  bool _is24HourFormat = true;
+  bool _is24HourFormat = false;
   set is24HourFormat(bool is24HourFormat) {
     if (_is24HourFormat != is24HourFormat) {
       _is24HourFormat = is24HourFormat;
@@ -24,7 +24,7 @@ class ClockModel extends ChangeNotifier {
 
   /// Current location String, for example 'Mountain View, CA'.
   get location => _location;
-  String _location = 'Mountain View, CA';
+  String _location = 'Cold Spring, KY';
   set location(String location) {
     if (location != _location) {
       _location = location;

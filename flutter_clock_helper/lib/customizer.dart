@@ -39,7 +39,7 @@ class ClockCustomizer extends StatefulWidget {
 
 class _ClockCustomizerState extends State<ClockCustomizer> {
   final _model = ClockModel();
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.dark;
   bool _configButtonShown = false;
 
   @override
@@ -57,8 +57,7 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
 
   void _handleModelChange() => setState(() {});
 
-  Widget _enumMenu<T>(
-      String label, T value, List<T> items, ValueChanged<T> onChanged) {
+  Widget _enumMenu<T>(String label, T value, List<T> items, ValueChanged<T> onChanged) {
     return InputDecorator(
       decoration: InputDecoration(
         labelText: label,
@@ -91,8 +90,7 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
     );
   }
 
-  Widget _textField(
-      String currentValue, String label, ValueChanged<Null> onChanged) {
+  Widget _textField(String currentValue, String label, ValueChanged<Null> onChanged) {
     return TextField(
       decoration: InputDecoration(
         hintText: currentValue,
@@ -115,15 +113,12 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
                     _model.location = location;
                   });
                 }),
-                _textField(_model.temperature.toString(), 'Temperature',
-                    (String temperature) {
+                _textField(_model.temperature.toString(), 'Temperature', (String temperature) {
                   setState(() {
                     _model.temperature = double.parse(temperature);
                   });
                 }),
-                _enumMenu('Theme', _themeMode,
-                    ThemeMode.values.toList()..remove(ThemeMode.system),
-                    (ThemeMode mode) {
+                _enumMenu('Theme', _themeMode, ThemeMode.values.toList()..remove(ThemeMode.system), (ThemeMode mode) {
                   setState(() {
                     _themeMode = mode;
                   });
@@ -133,15 +128,12 @@ class _ClockCustomizerState extends State<ClockCustomizer> {
                     _model.is24HourFormat = value;
                   });
                 }),
-                _enumMenu(
-                    'Weather', _model.weatherCondition, WeatherCondition.values,
-                    (WeatherCondition condition) {
+                _enumMenu('Weather', _model.weatherCondition, WeatherCondition.values, (WeatherCondition condition) {
                   setState(() {
                     _model.weatherCondition = condition;
                   });
                 }),
-                _enumMenu('Units', _model.unit, TemperatureUnit.values,
-                    (TemperatureUnit unit) {
+                _enumMenu('Units', _model.unit, TemperatureUnit.values, (TemperatureUnit unit) {
                   setState(() {
                     _model.unit = unit;
                   });
